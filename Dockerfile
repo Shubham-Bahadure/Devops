@@ -1,5 +1,5 @@
 # Use a base image with Java installed
-FROM openjdk:17-jre-slim
+FROM openjdk
 
 # Set environment variables
 ENV TOMCAT_VERSION=8.5.24
