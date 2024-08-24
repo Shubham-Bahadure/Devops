@@ -7,9 +7,9 @@ ENV TOMCAT_HOME=/opt/tomcat
 ENV CATALINA_HOME=${TOMCAT_HOME}
 
 # Install required packages
-RUN apt-get update && \
-    apt-get install -y wget && \
-    apt-get clean && \
+RUN apt update && \
+    apt install -y wget && \
+    apt clean && \
     rm -rf /var/lib/apt/lists/*
 
 # Download and install Tomcat
