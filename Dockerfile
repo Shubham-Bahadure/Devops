@@ -14,7 +14,7 @@ RUN mv apache-tomcat-8.5.24 /opt/tomcat
 # Configure Tomcat (customize as needed)
 COPY tomcat-users.xml /opt/tomcat/apache-tomcat-8.5.24/conf/tomcat-users.xml
 COPY context.xml /opt/tomcat/apache-tomcat-8.5.24/webapps/manager/META-INF/context.xml
-RUN sed -i "s/8080/8082/g" /opt/tomcat/apache-tomcat-8.5.24/conf/server.xml
+RUN sed -i "s/8080/8082/g" /opt/tomcat/conf/server.xml
 
 # Expose the port Tomcat is running on
 EXPOSE 8082
