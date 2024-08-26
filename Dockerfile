@@ -1,5 +1,5 @@
 # Use an official OpenJDK runtime as a parent image
-FROM openjdk:17-jre-slim
+FROM openjdk:17-jre
 
 # Set environment variables for Tomcat
 ENV TOMCAT_VERSION=8.5.24
