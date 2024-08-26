@@ -7,17 +7,19 @@ RUN apt-get update && \
     apt-get clean
 
 # Install Apache Tomcat
-RUN wget https://archive.apache.org/dist/tomcat/tomcat-8/v8.5.24/bin/apache-tomcat-8.5.24.tar.gz && \
-    tar -xzvf apache-tomcat-8.5.24.tar.gz && \
-    mv apache-tomcat-8.5.24 /opt/tomcat
+RUN wget https://archive.apache.org/dist/tomcat/tomcat-8/v8.5.24/bin/apache-tomcat-8.5.24.tar.gz
+RUN tar -xzvf apache-tomcat-8.5.24.tar.gz 
+RUN mv apache-tomcat-8.5.24 /opt/tomcat
 
 # Configure Tomcat (customize as needed)
-COPY tomcat-users.xml /opt/tomcat/conf/tomcat-users.xml
-COPY context.xml /opt/tomcat/webapps/manager/META-INF/context.xml
-RUN sed -i "s/8080/8082/g" /opt/tomcat/conf/server.xml
+COPY tomcat-users.xml /opt/tomcat/apache-tomcat-8.5.24/conf/tomcat-users.xml
+COPY context.xml /opt/tomcat/apache-tomcat-8.5.24/webapps/manager/META-INF/context.xml
+RUN sed -i "s/8080/8082/g" /opt/tomcat/apache-tomcat-8.5.24/conf/server.xml
 
 # Expose the port Tomcat is running on
 EXPOSE 8082
+
+COPY addressbook/addressbook_main/target/addressbook.war /opt/tomcat/apache-tomcat-8.5.24/webapps/
 
 # Set the Tomcat directory as an environment variable
 ENV CATALINA_HOME /opt/tomcat
