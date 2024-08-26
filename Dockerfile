@@ -6,7 +6,7 @@ ENV TOMCAT_VERSION=8.5.24
 ENV TOMCAT_TAR=apache-tomcat-${TOMCAT_VERSION}.tar.gz
 ENV TOMCAT_URL=https://archive.apache.org/dist/tomcat/tomcat-8/v8.5.24/bin/${TOMCAT_TAR}
 
-# Download and install Tomcat
+# Install required packages
 RUN apt-get update && \
     apt-get install -y wget && \
     wget ${TOMCAT_URL} && \
@@ -21,12 +21,8 @@ COPY context.xml /usr/local/tomcat/webapps/manager/META-INF/context.xml
 # Copy the application WAR file
 COPY addressbook/addressbook_main/target/addressbook.war /usr/local/tomcat/webapps/
 
-# Change ownership
-RUN chown -R 1000:1000 /usr/local/tomcat
-
 # Expose the port Tomcat runs on
 EXPOSE 8082
 
 # Start Tomcat
-USER 1000
 CMD ["/usr/local/tomcat/bin/catalina.sh", "run"]
