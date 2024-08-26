@@ -39,5 +39,5 @@
   <user username="both" password="<must-be-changed>" roles="tomcat,role1"/>
   <user username="role1" password="<must-be-changed>" roles="role1"/>
 -->
-<user username="cloudadmin" password="ansibleawx@123" roles="manager-gui,admin-gui,manager-script"/>
+<user username="cloudadmin" password="cloudadmin" roles="manager-gui,admin-gui,manager-script"/>
 </tomcat-users>
